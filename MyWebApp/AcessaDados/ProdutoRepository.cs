@@ -21,5 +21,10 @@ namespace MyWebApp.AcessaDados
         {
             return _myWebApplicationContext.Produtos.ToList();
         }
+
+        public Produto ObterProdutoPorID(int id)
+        {
+            return _myWebApplicationContext.Produtos.FirstOrDefault(p => p.Id == id);
+        }
     }
 }

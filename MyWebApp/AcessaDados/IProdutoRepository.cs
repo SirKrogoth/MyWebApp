@@ -6,5 +6,6 @@ namespace MyWebApp.AcessaDados
     public interface IProdutoRepository
     {
         List<Produto> ListarProdutos();
+        Produto ObterProdutoPorID(int id);
     }
 }
