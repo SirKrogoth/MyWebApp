@@ -7,5 +7,6 @@ namespace MyWebApp.AcessaDados
     {
         List<Produto> ListarProdutos();
         Produto ObterProdutoPorID(int id);
+        void Salvar(Produto produto);
     }
 }

@@ -26,5 +26,11 @@ namespace MyWebApp.AcessaDados
         {
             return _myWebApplicationContext.Produtos.FirstOrDefault(p => p.Id == id);
         }
+
+        public void Salvar(Produto produto)
+        {
+            _myWebApplicationContext.Produtos.Add(produto);
+            _myWebApplicationContext.SaveChanges();
+        }
     }
 }
