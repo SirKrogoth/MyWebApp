@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\ts\principal.ts" />
     <Content Remove="wwwroot\ts\produto.ts" />
   </ItemGroup>
 
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\ts\principal.ts" />
     <TypeScriptCompile Include="wwwroot\ts\produto.ts" />
   </ItemGroup>
 

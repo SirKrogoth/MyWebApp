@@ -1,6 +1,14 @@
-﻿class Produto {
+﻿export class Produto {
     public id: number = 0;
-    public nome: string
+    public nome: string;
+
+    constructor(private sigla: string, private preco: number) {
+
+    }
+
+    public exibirSigla() {
+        alert(this.sigla);
+    }
 
     public obterNome(): string {
         return this.nome;
