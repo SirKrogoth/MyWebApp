@@ -11,12 +11,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="AngularJS\app\Loja\listaProduto.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.4" />	
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="AngularJS\app\Loja\listaProduto.component.ts" />
     <TypeScriptCompile Include="wwwroot\ts\principal.ts" />
     <TypeScriptCompile Include="wwwroot\ts\produto.ts" />
   </ItemGroup>
