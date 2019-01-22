@@ -1,0 +1,107 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "AngularJS": {
+      "root": "",
+      "sourceRoot": "AngularJS",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "./wwwroot/AngularJS/dist",
+            "index": "AngularJS/index.html",
+            "main": "AngularJS/main.ts",
+            "polyfills": "AngularJS/polyfills.ts",
+            "tsConfig": "AngularJS/tsconfig.app.json",
+            "assets": [
+              "AngularJS/favicon.ico",
+              "AngularJS/assets"
+            ],
+            "styles": [
+              "AngularJS/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "AngularJS/environments/environment.ts",
+                  "with": "AngularJS/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "AngularJS:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "AngularJS:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "AngularJS:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "AngularJS/test.ts",
+            "polyfills": "AngularJS/polyfills.ts",
+            "tsConfig": "AngularJS/tsconfig.spec.json",
+            "karmaConfig": "AngularJS/karma.conf.js",
+            "styles": [
+              "AngularJS/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "AngularJS/favicon.ico",
+              "AngularJS/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "AngularJS/tsconfig.app.json",
+              "AngularJS/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "AngularJS"
+}
