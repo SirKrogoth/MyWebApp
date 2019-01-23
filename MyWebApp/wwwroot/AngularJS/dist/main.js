@@ -23,10 +23,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListaProduto", function() { return ListaProduto; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./AngularJS/node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./AngularJS/node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
+
 
 
 var ListaProduto = /** @class */ (function () {
-    function ListaProduto() {
+    function ListaProduto(data) {
+        this.data = data;
+        this.produtos = [];
+        this.produtos = data.produtos;
+    }
+    ListaProduto = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: "lista-produto",
+            template: __webpack_require__(/*! ./listaProduto.component.html */ "./AngularJS/app/Loja/listaProduto.component.html")
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__["DataServices"]])
+    ], ListaProduto);
+    return ListaProduto;
+}());
+
+
+
+/***/ }),
+
+/***/ "./AngularJS/app/Servicos/dataServices.ts":
+/*!************************************************!*\
+  !*** ./AngularJS/app/Servicos/dataServices.ts ***!
+  \************************************************/
+/*! exports provided: DataServices */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataServices", function() { return DataServices; });
+var DataServices = /** @class */ (function () {
+    function DataServices() {
         this.produtos = [
             {
                 titulo: "Primeiro produto",
@@ -46,13 +78,7 @@ var ListaProduto = /** @class */ (function () {
             }
         ];
     }
-    ListaProduto = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: "lista-produto",
-            template: __webpack_require__(/*! ./listaProduto.component.html */ "./AngularJS/app/Loja/listaProduto.component.html")
-        })
-    ], ListaProduto);
-    return ListaProduto;
+    return DataServices;
 }());
 
 
@@ -117,6 +143,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./AngularJS/app/app.component.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./AngularJS/node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _Loja_listaProduto_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Loja/listaProduto.component */ "./AngularJS/app/Loja/listaProduto.component.ts");
+/* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
+
 
 
 
@@ -136,7 +164,7 @@ var AppModule = /** @class */ (function () {
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot([], { useHash: true, enableTracing: true })
             ],
-            providers: [],
+            providers: [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_6__["DataServices"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);

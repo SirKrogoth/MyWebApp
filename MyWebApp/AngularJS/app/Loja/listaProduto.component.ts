@@ -1,4 +1,5 @@
 ﻿import {Component} from "@angular/core"
+import { DataServices } from '../Servicos/dataServices';
 
 @Component({
     selector: "lista-produto",
@@ -6,22 +7,9 @@
     styleUrls: []
 })
 export class ListaProduto {
-    public produtos = [
-        {
-            titulo: "Primeiro produto",
-            preco: 10,
-        },
-        {
-            titulo: "Segundo produto",
-            preco: 20,
-        },
-        {
-            titulo: "Terceiro produto",
-            preco: 10.49,
-        },
-        {
-            titulo: "Quarto produto",
-            preco: 100.99,
-        }
-    ];
+    constructor(private data: DataServices) {
+        this.produtos = data.produtos;
+    }
+
+    public produtos = [];
 }

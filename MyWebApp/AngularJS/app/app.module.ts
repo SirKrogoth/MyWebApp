@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ListaProduto } from './Loja/listaProduto.component';
+import { DataServices } from './Servicos/dataServices';
 
 
 
@@ -17,7 +18,7 @@ import { ListaProduto } from './Loja/listaProduto.component';
     BrowserModule,
       RouterModule.forRoot([], { useHash: true, enableTracing: true })
   ],
-  providers: [],
+  providers: [DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
