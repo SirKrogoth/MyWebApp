@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./AngularJS/$$_lazy_route_resource lazy recursive
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\r\n    <li *ngFor=\"let p of produtos\" >{{ p.nome }}</li>\r\n</ul>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-xs-9\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />        \r\n        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>\r\n        <div>{{p.nome}}</div>\r\n        <div>{{p.descricao}}</div>\r\n        <div>{{p.preco}}</div>\r\n        <button id=\"meu-button\" class=\"btn btn-primary\">Comprar</button>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -121,7 +121,7 @@ var DataServices = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>João Rafael Menezess</h1>\r\n\r\n<lista-produto></lista-produto>"
+module.exports = "<lista-produto></lista-produto>"
 
 /***/ }),
 

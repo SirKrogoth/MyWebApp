@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\AngularJS\dist\" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>
