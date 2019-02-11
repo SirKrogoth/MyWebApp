@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ListaProduto } from './Loja/listaProduto.component';
 import { DataServices } from './Servicos/dataServices';
+import { HttpModule } from '@angular/http';
+//import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +17,8 @@ import { DataServices } from './Servicos/dataServices';
       ListaProduto
   ],
   imports: [
-    BrowserModule,
+      BrowserModule,
+      HttpModule,
       RouterModule.forRoot([], { useHash: true, enableTracing: true })
   ],
   providers: [DataServices],

@@ -52,7 +52,7 @@ namespace MyWebApp.Controllers
             try
             {
                 _produtoRepository.Salvar(produto);
-                return Created("/api/produt", produto);
+                return Created("/api/produto", produto);
             }
             catch (Exception ex)
             {

@@ -1,20 +1,19 @@
-﻿export class DataServices {
-    public produtos = [
-        {
-            titulo: "Primeiro produto",
-            preco: 10,
-        },
-        {
-            titulo: "Segundo produto",
-            preco: 20,
-        },
-        {
-            titulo: "Terceiro produto",
-            preco: 10.49,
-        },
-        {
-            titulo: "Quarto produto",
-            preco: 100.99,
-        }
-    ];
+﻿import { Http, Response } from "@angular/http";
+import { Produto } from "../modelos/produto";
+import { Injectable } from "@angular/core";
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export class DataServices {
+    constructor(private http: Http) {
+
+    }
+
+    public produtos = [];
+
+    carregarProdutos() : Observable<Produto[]>{
+        return this.http.get("/api/produto")
+            .map((result: Response) => this.produtos = result.json());
+    }
 }

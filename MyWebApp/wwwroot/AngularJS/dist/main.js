@@ -1,5 +1,28 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
+/***/ "./AngularJS/$$_lazy_route_resource lazy recursive":
+/*!****************************************************************!*\
+  !*** ./AngularJS/$$_lazy_route_resource lazy namespace object ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(function() {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "./AngularJS/$$_lazy_route_resource lazy recursive";
+
+/***/ }),
+
 /***/ "./AngularJS/app/Loja/listaProduto.component.html":
 /*!********************************************************!*\
   !*** ./AngularJS/app/Loja/listaProduto.component.html ***!
@@ -7,7 +30,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\r\n    <li *ngFor=\"let p of produtos\" >{{ p.titulo }}</li>\r\n</ul>"
+module.exports = "<ul>\r\n    <li *ngFor=\"let p of produtos\" >{{ p.nome }}</li>\r\n</ul>"
 
 /***/ }),
 
@@ -21,8 +44,8 @@ module.exports = "<ul>\r\n    <li *ngFor=\"let p of produtos\" >{{ p.titulo }}</
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListaProduto", function() { return ListaProduto; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./AngularJS/node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./AngularJS/node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
 
 
@@ -33,6 +56,11 @@ var ListaProduto = /** @class */ (function () {
         this.produtos = [];
         this.produtos = data.produtos;
     }
+    ListaProduto.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.carregarProdutos()
+            .subscribe(function () { return _this.produtos = _this.data.produtos; });
+    };
     ListaProduto = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "lista-produto",
@@ -57,27 +85,28 @@ var ListaProduto = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataServices", function() { return DataServices; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+
+
+
+
 var DataServices = /** @class */ (function () {
-    function DataServices() {
-        this.produtos = [
-            {
-                titulo: "Primeiro produto",
-                preco: 10,
-            },
-            {
-                titulo: "Segundo produto",
-                preco: 20,
-            },
-            {
-                titulo: "Terceiro produto",
-                preco: 10.49,
-            },
-            {
-                titulo: "Quarto produto",
-                preco: 100.99,
-            }
-        ];
+    function DataServices(http) {
+        this.http = http;
+        this.produtos = [];
     }
+    DataServices.prototype.carregarProdutos = function () {
+        var _this = this;
+        return this.http.get("/api/produto")
+            .map(function (result) { return _this.produtos = result.json(); });
+    };
+    DataServices = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"]])
+    ], DataServices);
     return DataServices;
 }());
 
@@ -106,8 +135,8 @@ module.exports = "<h1>João Rafael Menezess</h1>\r\n\r\n<lista-produto></lista-p
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./AngularJS/node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./AngularJS/node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 
 
 var AppComponent = /** @class */ (function () {
@@ -137,13 +166,14 @@ var AppComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./AngularJS/node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./AngularJS/node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./AngularJS/node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./AngularJS/app/app.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./AngularJS/node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _Loja_listaProduto_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Loja/listaProduto.component */ "./AngularJS/app/Loja/listaProduto.component.ts");
 /* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
 
 
 
@@ -151,6 +181,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+//import { HttpClientModule } from '@angular/common/http';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -162,6 +194,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_7__["HttpModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot([], { useHash: true, enableTracing: true })
             ],
             providers: [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_6__["DataServices"]],
@@ -212,8 +245,8 @@ var environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./AngularJS/node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./AngularJS/node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./AngularJS/app/app.module.ts");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./AngularJS/environments/environment.ts");
 
@@ -229,29 +262,6 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 
 /***/ }),
 
-/***/ "./AngularJS/node_modules/@angular/core/fesm5 lazy recursive":
-/*!**************************************************************************!*\
-  !*** ./AngularJS/node_modules/@angular/core/fesm5 lazy namespace object ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncaught exception popping up in devtools
-	return Promise.resolve().then(function() {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "./AngularJS/node_modules/@angular/core/fesm5 lazy recursive";
-
-/***/ }),
-
 /***/ 0:
 /*!*********************************!*\
   !*** multi ./AngularJS/main.ts ***!
@@ -259,7 +269,7 @@ webpackEmptyAsyncContext.id = "./AngularJS/node_modules/@angular/core/fesm5 lazy
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\joaor\source\repos\MyWebApp\MyWebApp\AngularJS\main.ts */"./AngularJS/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Nicolas\source\repos\MyWebApp3\MyWebApp\AngularJS\main.ts */"./AngularJS/main.ts");
 
 
 /***/ })
