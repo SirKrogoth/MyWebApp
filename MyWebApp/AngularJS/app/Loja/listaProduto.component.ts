@@ -5,7 +5,7 @@ import { Produto } from "../modelos/produto";
 @Component({
     selector: "lista-produto",
     templateUrl: "./listaProduto.component.html",
-    styleUrls: []
+    styleUrls: ["listaProduto.component.css"]
 })
 
 export class ListaProduto implements OnInit{

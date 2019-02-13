@@ -11,9 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="AngularJS\app\Loja\listaProduto.component.ts" />
+    <None Remove="AngularJS\app\loja\carrinho\carrinho.component.ts" />
+    <None Remove="AngularJS\app\loja\listaProduto.component.ts" />
+    <None Remove="AngularJS\app\modelos\pedidos.ts" />
     <None Remove="AngularJS\app\modelos\produto.ts" />
-    <None Remove="AngularJS\app\Servicos\dataServices.ts" />
+    <None Remove="AngularJS\app\servicos\dataServices.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,9 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="AngularJS\app\Loja\listaProduto.component.ts" />
+    <TypeScriptCompile Include="AngularJS\app\loja\carrinho\carrinho.component.ts" />
+    <TypeScriptCompile Include="AngularJS\app\loja\listaProduto.component.ts" />
+    <TypeScriptCompile Include="AngularJS\app\modelos\pedidos.ts" />
     <TypeScriptCompile Include="AngularJS\app\modelos\produto.ts" />
-    <TypeScriptCompile Include="AngularJS\app\Servicos\dataServices.ts" />
+    <TypeScriptCompile Include="AngularJS\app\servicos\dataServices.ts" />
     <TypeScriptCompile Include="wwwroot\ts\principal.ts" />
     <TypeScriptCompile Include="wwwroot\ts\produto.ts" />
   </ItemGroup>

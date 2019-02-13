@@ -23,6 +23,17 @@ webpackEmptyAsyncContext.id = "./AngularJS/$$_lazy_route_resource lazy recursive
 
 /***/ }),
 
+/***/ "./AngularJS/app/Loja/listaProduto.component.css":
+/*!*******************************************************!*\
+  !*** ./AngularJS/app/Loja/listaProduto.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".produto-info img{\r\n       margin: 0 2px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkFuZ3VsYXJKUy9hcHAvTG9qYS9saXN0YVByb2R1dG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtPQUNPLGFBQWE7QUFDcEIiLCJmaWxlIjoiQW5ndWxhckpTL2FwcC9Mb2phL2xpc3RhUHJvZHV0by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnByb2R1dG8taW5mbyBpbWd7XHJcbiAgICAgICBtYXJnaW46IDAgMnB4O1xyXG59XHJcbiJdfQ== */"
+
+/***/ }),
+
 /***/ "./AngularJS/app/Loja/listaProduto.component.html":
 /*!********************************************************!*\
   !*** ./AngularJS/app/Loja/listaProduto.component.html ***!
@@ -30,7 +41,7 @@ webpackEmptyAsyncContext.id = "./AngularJS/$$_lazy_route_resource lazy recursive
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-xs-9\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />        \r\n        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>\r\n        <div>{{p.nome}}</div>\r\n        <div>{{p.descricao}}</div>\r\n        <div>{{p.preco}}</div>\r\n        <button id=\"meu-button\" class=\"btn btn-primary\">Comprar</button>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"produto-info col-xs-4 well\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />        \r\n        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>\r\n        <div>{{p.nome}}</div>\r\n        <div>{{p.descricao}}</div>\r\n        <div>{{p.preco}}</div>\r\n        <button id=\"meu-button\" class=\"btn btn-success btn-sm\">Comprar</button>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -64,7 +75,8 @@ var ListaProduto = /** @class */ (function () {
     ListaProduto = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "lista-produto",
-            template: __webpack_require__(/*! ./listaProduto.component.html */ "./AngularJS/app/Loja/listaProduto.component.html")
+            template: __webpack_require__(/*! ./listaProduto.component.html */ "./AngularJS/app/Loja/listaProduto.component.html"),
+            styles: [__webpack_require__(/*! ./listaProduto.component.css */ "./AngularJS/app/Loja/listaProduto.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__["DataServices"]])
     ], ListaProduto);
@@ -121,7 +133,7 @@ var DataServices = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<lista-produto></lista-produto>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-xs-9\">\r\n        <lista-produto></lista-produto>\r\n    </div>\r\n    <div class=\"col-xs-3\">\r\n        <div>\r\n            <div class=\"well well-sm\">\r\n                <carrinho></carrinho>\r\n            </div>            \r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -174,6 +186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Loja_listaProduto_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Loja/listaProduto.component */ "./AngularJS/app/Loja/listaProduto.component.ts");
 /* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _loja_carrinho_carrinho_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./loja/carrinho/carrinho.component */ "./AngularJS/app/loja/carrinho/carrinho.component.ts");
 
 
 
@@ -182,7 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//import { HttpClientModule } from '@angular/common/http';
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -190,7 +203,8 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                _Loja_listaProduto_component__WEBPACK_IMPORTED_MODULE_5__["ListaProduto"]
+                _Loja_listaProduto_component__WEBPACK_IMPORTED_MODULE_5__["ListaProduto"],
+                _loja_carrinho_carrinho_component__WEBPACK_IMPORTED_MODULE_8__["Carrinho"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -202,6 +216,51 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./AngularJS/app/loja/carrinho/carrinho.component.html":
+/*!*************************************************************!*\
+  !*** ./AngularJS/app/loja/carrinho/carrinho.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3 align=\"center\">Carrinho de Compras</h3>"
+
+/***/ }),
+
+/***/ "./AngularJS/app/loja/carrinho/carrinho.component.ts":
+/*!***********************************************************!*\
+  !*** ./AngularJS/app/loja/carrinho/carrinho.component.ts ***!
+  \***********************************************************/
+/*! exports provided: Carrinho */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Carrinho", function() { return Carrinho; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
+
+
+
+var Carrinho = /** @class */ (function () {
+    function Carrinho(data) {
+        this.data = data;
+    }
+    Carrinho = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: "carrinho",
+            template: __webpack_require__(/*! ./carrinho.component.html */ "./AngularJS/app/loja/carrinho/carrinho.component.html")
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__["DataServices"]])
+    ], Carrinho);
+    return Carrinho;
 }());
 
 

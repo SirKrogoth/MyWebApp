@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyWebApp.AcessaDados.Entidades
+﻿namespace MyWebApp.AcessaDados.Entidades
 {
     public class ItemPedido
     {

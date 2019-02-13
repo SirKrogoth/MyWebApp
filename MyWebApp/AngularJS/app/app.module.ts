@@ -7,14 +7,14 @@ import { RouterModule } from '@angular/router';
 import { ListaProduto } from './Loja/listaProduto.component';
 import { DataServices } from './Servicos/dataServices';
 import { HttpModule } from '@angular/http';
-//import { HttpClientModule } from '@angular/common/http';
-
+import { Carrinho } from './loja/carrinho/carrinho.component';
 
 
 @NgModule({
   declarations: [
       AppComponent,
-      ListaProduto
+      ListaProduto,
+      Carrinho
   ],
   imports: [
       BrowserModule,
