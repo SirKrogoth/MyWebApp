@@ -41,7 +41,7 @@ module.exports = ".produto-info img{\r\n       margin: 0 2px;\r\n}\r\n\r\n/*# so
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"produto-info col-xs-4 well\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />        \r\n        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>\r\n        <div>{{p.nome}}</div>\r\n        <div>{{p.descricao}}</div>\r\n        <div>{{p.preco}}</div>\r\n        <button id=\"meu-button\" class=\"btn btn-success btn-sm\">Comprar</button>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"produto-info col-xs-4 well\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />        \r\n        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>\r\n        <div>{{p.nome}}</div>\r\n        <div>{{p.descricao}}</div>\r\n        <div>{{p.preco}}</div>\r\n\r\n        <button id=\"meu-button\" class=\"btn btn-success btn-sm\" (click)=\"adicionarProduto(p)\">Comprar</button>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -72,6 +72,9 @@ var ListaProduto = /** @class */ (function () {
         this.data.carregarProdutos()
             .subscribe(function () { return _this.produtos = _this.data.produtos; });
     };
+    ListaProduto.prototype.adicionarProduto = function (produto) {
+        this.data.adicionarProduto(produto);
+    };
     ListaProduto = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: "lista-produto",
@@ -101,6 +104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var _modelos_pedidos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modelos/pedidos */ "./AngularJS/app/modelos/pedidos.ts");
+
 
 
 
@@ -108,12 +113,21 @@ __webpack_require__.r(__webpack_exports__);
 var DataServices = /** @class */ (function () {
     function DataServices(http) {
         this.http = http;
-        this.produtos = [];
+        this.pedido = new _modelos_pedidos__WEBPACK_IMPORTED_MODULE_4__["Pedido"];
     }
     DataServices.prototype.carregarProdutos = function () {
         var _this = this;
         return this.http.get("/api/produto")
             .map(function (result) { return _this.produtos = result.json(); });
+    };
+    DataServices.prototype.adicionarProduto = function (produto) {
+        var item;
+        item = new _modelos_pedidos__WEBPACK_IMPORTED_MODULE_4__["ItemPedido"]();
+        item.Produto.id = produto.id;
+        item.Produto.nome = produto.nome;
+        item.Produto.descricao = produto.descricao;
+        item.Produto.preco = produto.preco;
+        this.pedido.ItensPedidos.push(item);
     };
     DataServices = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -229,7 +243,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 align=\"center\">Carrinho de Compras</h3>"
+module.exports = "<h3 align=\"center\">Carrinho de Compras</h3>\r\n<div>Contagem: {{data.pedido.ItensPedidos.lenght}} </div>"
 
 /***/ }),
 
@@ -261,6 +275,57 @@ var Carrinho = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__["DataServices"]])
     ], Carrinho);
     return Carrinho;
+}());
+
+
+
+/***/ }),
+
+/***/ "./AngularJS/app/modelos/pedidos.ts":
+/*!******************************************!*\
+  !*** ./AngularJS/app/modelos/pedidos.ts ***!
+  \******************************************/
+/*! exports provided: Pedido, ItemPedido */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pedido", function() { return Pedido; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ItemPedido", function() { return ItemPedido; });
+/* harmony import */ var _modelos_produto__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modelos/produto */ "./AngularJS/app/modelos/produto.ts");
+
+var Pedido = /** @class */ (function () {
+    function Pedido() {
+        this.ItensPedidos = new Array();
+    }
+    return Pedido;
+}());
+
+var ItemPedido = /** @class */ (function () {
+    function ItemPedido() {
+        this.Produto = new _modelos_produto__WEBPACK_IMPORTED_MODULE_0__["Produto"]();
+    }
+    return ItemPedido;
+}());
+
+
+
+/***/ }),
+
+/***/ "./AngularJS/app/modelos/produto.ts":
+/*!******************************************!*\
+  !*** ./AngularJS/app/modelos/produto.ts ***!
+  \******************************************/
+/*! exports provided: Produto */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Produto", function() { return Produto; });
+var Produto = /** @class */ (function () {
+    function Produto() {
+    }
+    return Produto;
 }());
 
 

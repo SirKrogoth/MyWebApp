@@ -20,4 +20,8 @@ export class ListaProduto implements OnInit{
         this.data.carregarProdutos()
             .subscribe(() => this.produtos = this.data.produtos);
     }
+
+    adicionarProduto(produto: Produto) {
+        this.data.adicionarProduto(produto);
+    }
 }
