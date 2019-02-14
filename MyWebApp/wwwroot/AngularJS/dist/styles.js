@@ -557,7 +557,7 @@ module.exports = function (css) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Nicolas\source\repos\MyWebApp3\MyWebApp\AngularJS\styles.css */"./AngularJS/styles.css");
+module.exports = __webpack_require__(/*! C:\Users\Nicolas\source\repos\MyWebApp2\MyWebApp\AngularJS\styles.css */"./AngularJS/styles.css");
 
 
 /***/ })

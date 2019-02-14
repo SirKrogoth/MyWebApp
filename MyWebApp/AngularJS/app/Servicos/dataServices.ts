@@ -20,14 +20,22 @@ export class DataServices {
     }
 
     adicionarProduto(produto: Produto) {
+        let itemSelecionado = this.pedido.ItensPedidos.find(i => i.Produto.id == produto.id);
         let item: ItemPedido;
-        item = new ItemPedido();
 
-        item.Produto.id = produto.id;
-        item.Produto.nome = produto.nome;
-        item.Produto.descricao = produto.descricao;
-        item.Produto.preco = produto.preco;
+        if (itemSelecionado) {
+            itemSelecionado.quantidade++;
+        }
+        else {            
+            item = new ItemPedido();
 
-        this.pedido.ItensPedidos.push(item);
+            item.Produto.id = produto.id;
+            item.Produto.nome = produto.nome;
+            item.Produto.descricao = produto.descricao;
+            item.Produto.preco = produto.preco;
+            item.quantidade = 1;
+
+            this.pedido.ItensPedidos.push(item);
+        }        
     }
 }

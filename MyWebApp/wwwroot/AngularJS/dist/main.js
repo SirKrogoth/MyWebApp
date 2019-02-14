@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./AngularJS/$$_lazy_route_resource lazy recursive
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".produto-info img{\r\n       margin: 0 2px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkFuZ3VsYXJKUy9hcHAvTG9qYS9saXN0YVByb2R1dG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtPQUNPLGFBQWE7QUFDcEIiLCJmaWxlIjoiQW5ndWxhckpTL2FwcC9Mb2phL2xpc3RhUHJvZHV0by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnByb2R1dG8taW5mbyBpbWd7XHJcbiAgICAgICBtYXJnaW46IDAgMnB4O1xyXG59XHJcbiJdfQ== */"
+module.exports = ".produto-info img{\r\n       margin: 0 2px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkFuZ3VsYXJKUy9hcHAvTG9qYS9saXN0YVByb2R1dG8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtPQUNPLGFBQWE7QUFDcEIiLCJmaWxlIjoiQW5ndWxhckpTL2FwcC9Mb2phL2xpc3RhUHJvZHV0by5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnByb2R1dG8taW5mbyBpbWd7XHJcbiAgICAgICBtYXJnaW46IDAgMnB4O1xyXG59Il19 */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".produto-info img{\r\n       margin: 0 2px;\r\n}\r\n\r\n/*# so
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"produto-info col-xs-4 well\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />        \r\n        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>\r\n        <div>{{p.nome}}</div>\r\n        <div>{{p.descricao}}</div>\r\n        <div>{{p.preco}}</div>\r\n\r\n        <button id=\"meu-button\" class=\"btn btn-success btn-sm\" (click)=\"adicionarProduto(p)\">Comprar</button>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div class=\"produto-info col-xs-4 well\" *ngFor=\"let p of produtos\">\r\n        <img src=\"img/lgk10.jpg\" width=\"225\" height=\"225\" alt=\"Celular LG K10\" />\r\n        \r\n        <h4>{{p.nome}}</h4>        \r\n        <h2><strong>{{p.preco | currency: \"R$\":true}}</strong></h2>\r\n\r\n        <button id=\"meu-button\" class=\"btn btn-success btn-sm\" (click)=\"adicionarProduto(p)\">Comprar</button>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -121,13 +121,20 @@ var DataServices = /** @class */ (function () {
             .map(function (result) { return _this.produtos = result.json(); });
     };
     DataServices.prototype.adicionarProduto = function (produto) {
+        var itemSelecionado = this.pedido.ItensPedidos.find(function (i) { return i.Produto.id == produto.id; });
         var item;
-        item = new _modelos_pedidos__WEBPACK_IMPORTED_MODULE_4__["ItemPedido"]();
-        item.Produto.id = produto.id;
-        item.Produto.nome = produto.nome;
-        item.Produto.descricao = produto.descricao;
-        item.Produto.preco = produto.preco;
-        this.pedido.ItensPedidos.push(item);
+        if (itemSelecionado) {
+            itemSelecionado.quantidade++;
+        }
+        else {
+            item = new _modelos_pedidos__WEBPACK_IMPORTED_MODULE_4__["ItemPedido"]();
+            item.Produto.id = produto.id;
+            item.Produto.nome = produto.nome;
+            item.Produto.descricao = produto.descricao;
+            item.Produto.preco = produto.preco;
+            item.quantidade = 1;
+            this.pedido.ItensPedidos.push(item);
+        }
     };
     DataServices = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
@@ -147,7 +154,7 @@ var DataServices = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <div class=\"col-xs-9\">\r\n        <lista-produto></lista-produto>\r\n    </div>\r\n    <div class=\"col-xs-3\">\r\n        <div>\r\n            <div class=\"well well-sm\">\r\n                <carrinho></carrinho>\r\n            </div>            \r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"row\">\r\n    <div class=\"col-xs-8\">\r\n        <lista-produto></lista-produto>\r\n    </div>\r\n    <div class=\"col-xs-4\">\r\n        <div>\r\n            <div class=\"well well-sm\">\r\n                <carrinho></carrinho>\r\n            </div>            \r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -243,7 +250,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3 align=\"center\">Carrinho de Compras</h3>\r\n<div>Contagem: {{data.pedido.ItensPedidos.lenght}} </div>"
+module.exports = "<h3 align=\"center\">Carrinho de Compras</h3>\r\n<div>Total: {{data.pedido.total | currency: \"R$\": true}}</div>\r\n\r\n<table class=\"table table-condensed table-hover\">\r\n    <thead>\r\n        <tr>\r\n            <td><strong>Nome</strong></td>\r\n            <td><strong>Quantidade</strong></td>\r\n            <td><strong>Preço</strong></td>\r\n            <td><strong>Total</strong></td>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let item of data.pedido.ItensPedidos\">\r\n            <td>{{item.Produto.nome}}</td>\r\n            <td>{{item.quantidade}}</td>\r\n            <td>{{item.Produto.preco | currency: \"R$\": true}}</td>\r\n            <td>{{(item.Produto.preco * item.quantidade) | currency: \"R$\": true}}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>"
 
 /***/ }),
 
@@ -293,11 +300,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pedido", function() { return Pedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ItemPedido", function() { return ItemPedido; });
 /* harmony import */ var _modelos_produto__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modelos/produto */ "./AngularJS/app/modelos/produto.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var Pedido = /** @class */ (function () {
     function Pedido() {
         this.ItensPedidos = new Array();
     }
+    Object.defineProperty(Pedido.prototype, "total", {
+        get: function () {
+            return lodash__WEBPACK_IMPORTED_MODULE_1__["sum"](lodash__WEBPACK_IMPORTED_MODULE_1__["map"](this.ItensPedidos, function (i) { return i.Produto.preco * i.quantidade; }));
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Pedido;
 }());
 
@@ -393,7 +410,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Nicolas\source\repos\MyWebApp3\MyWebApp\AngularJS\main.ts */"./AngularJS/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Nicolas\source\repos\MyWebApp2\MyWebApp\AngularJS\main.ts */"./AngularJS/main.ts");
 
 
 /***/ })

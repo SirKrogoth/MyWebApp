@@ -23,5 +23,5 @@ export class ListaProduto implements OnInit{
 
     adicionarProduto(produto: Produto) {
         this.data.adicionarProduto(produto);
-    }
+    }    
 }

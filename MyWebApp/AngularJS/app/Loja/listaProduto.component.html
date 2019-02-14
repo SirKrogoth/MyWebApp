@@ -1,10 +1,9 @@
 ﻿<div class="row">
     <div class="produto-info col-xs-4 well" *ngFor="let p of produtos">
-        <img src="img/lgk10.jpg" width="225" height="225" alt="Celular LG K10" />        
-        <h3>Smartphone lG K10 K430 Tela 5.3, Memória de 16GB, Câmera de 13MP - Azul Indigo</h3>
-        <div>{{p.nome}}</div>
-        <div>{{p.descricao}}</div>
-        <div>{{p.preco}}</div>
+        <img src="img/lgk10.jpg" width="225" height="225" alt="Celular LG K10" />
+        
+        <h4>{{p.nome}}</h4>        
+        <h2><strong>{{p.preco | currency: "R$":true}}</strong></h2>
 
         <button id="meu-button" class="btn btn-success btn-sm" (click)="adicionarProduto(p)">Comprar</button>
     </div>

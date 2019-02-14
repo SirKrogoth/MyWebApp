@@ -1,2 +1,21 @@
 ﻿<h3 align="center">Carrinho de Compras</h3>
-<div>Contagem: {{data.pedido.ItensPedidos.lenght}} </div>
+<div>Total: {{data.pedido.total | currency: "R$": true}}</div>
+
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <td><strong>Nome</strong></td>
+            <td><strong>Quantidade</strong></td>
+            <td><strong>Preço</strong></td>
+            <td><strong>Total</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data.pedido.ItensPedidos">
+            <td>{{item.Produto.nome}}</td>
+            <td>{{item.quantidade}}</td>
+            <td>{{item.Produto.preco | currency: "R$": true}}</td>
+            <td>{{(item.Produto.preco * item.quantidade) | currency: "R$": true}}</td>
+        </tr>
+    </tbody>
+</table>
