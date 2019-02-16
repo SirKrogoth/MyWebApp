@@ -38,4 +38,12 @@ export class DataServices {
             this.pedido.ItensPedidos.push(item);
         }        
     }
+
+    public efetivarComprar() {
+        return this.http.post("/api/pedido", this.pedido)
+            .map(resposta => {
+                this.pedido = new Pedido();
+                return true;
+            });
+    }
 }

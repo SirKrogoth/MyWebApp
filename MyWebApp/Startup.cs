@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWebApp.AcessaDados;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace MyWebApp
 {
@@ -34,9 +35,12 @@ namespace MyWebApp
 
             services.AddDbContext<MyWebApplicationContext>(options => options.UseMySql(sqlConnection, 
                 b => b.MigrationsAssembly("MyWebApp")));
-            //Adicionando serviços de MVC
-            services.AddMvc();
+            
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+
+            //Adicionando serviços de MVC
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

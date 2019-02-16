@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./AngularJS/$$_lazy_route_resource lazy recursive
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n    <h3>Efetivar Compra</h3>\r\n\r\n    <table class=\"table table-bordered table-hover\">\r\n        <thead>\r\n            <tr *ngFor=\"let item of data.pedido.ItensPedidos\">\r\n                <td><img src=\"/img/lgk10.jpg\" width=\"200\" height=\"200\"/></td>\r\n                <td>{{item.Produto.nome}}</td>\r\n                <td>{{item.quantidade}}</td>\r\n                <td>{{item.Produto.preco | currency: \"R$\" : true}}</td>\r\n                <td>{{(item.Produto.preco * item.quantidade)| currency: \"R$\" : true}}</td>\r\n            </tr>\r\n        </thead>\r\n    </table>\r\n\r\n    <div class=\"col-xs-4 col-xs-offset-8 text-right\">\r\n        <table class=\"table table-condensed\">\r\n            <tr>\r\n                <td>Total:</td>\r\n                <td>{{data.pedido.total | currency: \"R$\" : true}}</td>\r\n            </tr>\r\n            <tr>\r\n                <td>Frete</td>\r\n                <td>R$ 0.00</td>\r\n            </tr>\r\n        </table>\r\n        <button class=\"btn btn-success\" (click)=\"onEfetivarCompra()\">Comprar</button>\r\n        <button class=\"btn btn-danger\" (click)=\"onCancelarCompra()\" routerLink=\"\">Cancelar</button>\r\n        <a routerLink=\"\" class=\"btn btn-info\">Voltar</a>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n    <div *ngIf=\"mensagem\" class=\"alert alert-danger\">{{mensagem}}</div>\r\n    <h3>Efetivar Compra</h3>\r\n\r\n    <table class=\"table table-bordered table-hover\">\r\n        <thead>\r\n            <tr *ngFor=\"let item of data.pedido.ItensPedidos\">\r\n                <td><img src=\"/img/lgk10.jpg\" width=\"200\" height=\"200\" /></td>\r\n                <td>{{item.Produto.nome}}</td>\r\n                <td>{{item.quantidade}}</td>\r\n                <td>{{item.Produto.preco | currency: \"R$\" : true}}</td>\r\n                <td>{{(item.Produto.preco * item.quantidade)| currency: \"R$\" : true}}</td>\r\n            </tr>\r\n        </thead>\r\n    </table>\r\n\r\n    <div class=\"col-xs-4 col-xs-offset-8 text-right\">\r\n        <table class=\"table table-condensed\">\r\n            <tr>\r\n                <td>Total:</td>\r\n                <td>{{data.pedido.total | currency: \"R$\" : true}}</td>\r\n            </tr>\r\n            <tr>\r\n                <td>Frete</td>\r\n                <td>R$ 0.00</td>\r\n            </tr>\r\n        </table>\r\n        <button class=\"btn btn-success\" (click)=\"onEfetivarComprar()\">Comprar</button>\r\n        <button class=\"btn btn-danger\" (click)=\"onCancelarCompra()\" routerLink=\"\">Cancelar</button>\r\n        <a routerLink=\"\" class=\"btn btn-info\">Voltar</a>\r\n\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -47,15 +47,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Servicos/dataServices */ "./AngularJS/app/Servicos/dataServices.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 var EfetivarCompra = /** @class */ (function () {
-    function EfetivarCompra(data) {
+    function EfetivarCompra(data, router) {
         this.data = data;
+        this.router = router;
     }
-    EfetivarCompra.prototype.onEfetivarCompra = function () {
-        alert('Efetivar Compra');
+    EfetivarCompra.prototype.onEfetivarComprar = function () {
+        var _this = this;
+        this.data.efetivarComprar()
+            .subscribe(function (sucesso) {
+            if (sucesso) {
+                _this.router.navigate([""]);
+            }
+        }, function (erro) { return _this.mensagem = "Falha ao salvar pedido"; });
     };
     EfetivarCompra.prototype.onCancelarCompra = function () {
         this.data.pedido.ItensPedidos = null;
@@ -65,7 +74,7 @@ var EfetivarCompra = /** @class */ (function () {
             selector: "efetivar",
             template: __webpack_require__(/*! ./efetivarCompra.component.html */ "./AngularJS/app/Loja/efetivarCompra/efetivarCompra.component.html")
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__["DataServices"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Servicos_dataServices__WEBPACK_IMPORTED_MODULE_2__["DataServices"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], EfetivarCompra);
     return EfetivarCompra;
 }());
@@ -227,6 +236,14 @@ var DataServices = /** @class */ (function () {
             item.quantidade = 1;
             this.pedido.ItensPedidos.push(item);
         }
+    };
+    DataServices.prototype.efetivarComprar = function () {
+        var _this = this;
+        return this.http.post("/api/pedido", this.pedido)
+            .map(function (resposta) {
+            _this.pedido = new _modelos_pedidos__WEBPACK_IMPORTED_MODULE_4__["Pedido"]();
+            return true;
+        });
     };
     DataServices = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
