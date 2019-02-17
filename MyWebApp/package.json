@@ -30,9 +30,13 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.2",
     "@angular/cli": "~7.2.2",
-    "@angular/compiler-cli": "~7.2.0",
+    "@angular/compiler-cli": "^7.2.5",
     "@angular/language-service": "~7.2.0",
     "@types/node": "~8.9.4",
+    "gulp": "^4.0.0",
+    "gulp-concat": "2.6.1",
+    "gulp-htmlclean": "^2.7.22",
+    "gulp-uglify": "^3.0.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.2.2"
